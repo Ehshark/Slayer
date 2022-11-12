@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    Animator anim;
+    private Animator anim;
+    private SpriteRenderer spr;
 
     private enum State {idle, running}
     private State state = State.idle;
@@ -12,30 +13,30 @@ public class PlayerAnimation : MonoBehaviour
     public Vector2 playerVelocity;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         anim = GetComponent<Animator>();
+        spr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
+        //flipping the sprite
         if(playerVelocity.x < 0)
         {
-            transform.localScale = new Vector2(-1, 1);
+            spr.flipX = true;
         }
         if(playerVelocity.x > 0)
         {
-            transform.localScale = new Vector2(1, 1);
+            spr.flipX = false;
         }
 
         AnimationState();
         anim.SetInteger("state", (int)state);
-
-        Debug.Log(state);
     }
 
+    //State machine
     private void AnimationState()
     {
         if(Mathf.Abs(playerVelocity.x) > 0f || Mathf.Abs(playerVelocity.y) > 0f)
