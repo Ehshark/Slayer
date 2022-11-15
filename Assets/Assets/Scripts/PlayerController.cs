@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
 
-    private Vector2 movementVector;
+    private Vector3 movementVector;
     [SerializeField] private float speed = 5f;
     [SerializeField] private float health = 5f;
 
@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
         //movement
         movementVector.x = Input.GetAxisRaw("Horizontal");

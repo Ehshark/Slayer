@@ -10,7 +10,7 @@ public class PlayerAnimation : MonoBehaviour
     private enum State {idle, running}
     private State state = State.idle;
 
-    public Vector2 playerVelocity;
+    public Vector3 playerVelocity;
 
     // Start is called before the first frame update
     private void Start()

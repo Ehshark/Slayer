@@ -16,20 +16,21 @@ public class Enemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spr = GetComponent<SpriteRenderer>();
-        speed = 2f;
-        health = 2f;
-        attack = 2f;
+        speed = 1f;
+        health = 1f;
+        attack = 1f;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        Vector2 direction = (playerLocation.position - transform.position).normalized; //enemy chases player's current location
+        Vector3 direction = (playerLocation.position - transform.position).normalized; //enemy chases player's current location
         rb.velocity = direction * speed;
 
         spr.flipX = (direction.x < 0); //flipping the sprite
     }
 
-    /*void OnCollisionEnter2D(Collision2D collision)
+    //When enemy touches player, cause the player is take damage equal to enemy's attack
+    /*private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
@@ -37,8 +38,7 @@ public class Enemy : MonoBehaviour
         }
     }*/
 
-    //When enemy touches player, cause the player is take damage equal to enemy's attack
-    void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
         if(collider.gameObject.tag == "Player")
         {
