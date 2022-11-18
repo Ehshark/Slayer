@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spr = GetComponent<SpriteRenderer>();
         speed = 1f;
-        health = 1f;
+        health = 10f;
         attack = 1f;
     }
 
@@ -42,8 +42,13 @@ public class Enemy : MonoBehaviour
     {
         if(collider.gameObject.tag == "Player")
         {
-            Debug.Log("here2");
             collider.gameObject.GetComponent<PlayerController>().TakeDamage(attack);
         }
+    }
+
+    //when enemy is hit by player's attack, this function is called, passes in player's attack
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
     }
 }
