@@ -7,8 +7,8 @@ public class PlayerAnimation : MonoBehaviour
     private Animator anim;
     private SpriteRenderer spr;
 
-    private enum State {idle, running}
-    private State state = State.idle;
+    private enum State {idle, running} //all animation states
+    private State state = State.idle; //player's default state is idle
 
     public Vector3 playerVelocity;
 
@@ -39,13 +39,13 @@ public class PlayerAnimation : MonoBehaviour
     //State machine
     private void AnimationState()
     {
-        if(Mathf.Abs(playerVelocity.x) > 0f || Mathf.Abs(playerVelocity.y) > 0f)
+        if(Mathf.Abs(playerVelocity.x) > 0f || Mathf.Abs(playerVelocity.y) > 0f) //if player has any velocity
         {
             state = State.running;
         }
         else
         {
-            state = State.idle;
+            state = State.idle; //player standing still
         }
     }
 }

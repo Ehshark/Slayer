@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer spr;
     [SerializeField] private float speed;
+    [SerializeField] private float maxHealth;
     [SerializeField] private float health;
     [SerializeField] private float attack;
 
@@ -16,9 +17,7 @@ public class Enemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spr = GetComponent<SpriteRenderer>();
-        speed = 1f;
-        health = 10f;
-        attack = 1f;
+        playerLocation = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void FixedUpdate()
@@ -50,5 +49,10 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+
+        if(health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
