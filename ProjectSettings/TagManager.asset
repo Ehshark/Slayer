@@ -42,3 +42,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 4080819929
+    locked: 0
+  - name: Foliage
+    uniqueID: 27731661
+    locked: 0
+  - name: Entity
+    uniqueID: 3419227099
+    locked: 0
+  - name: Foreground
+    uniqueID: 218134251
+    locked: 0
